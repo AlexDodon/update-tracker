@@ -1,4 +1,3 @@
-#!python
 import signal
 import sys
 import jsonpickle

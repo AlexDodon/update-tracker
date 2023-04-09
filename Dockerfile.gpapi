@@ -1,0 +1,12 @@
+FROM python:alpine as builder
+
+RUN apk add --no-cache protoc --no-cache git \
+    && pip install protobuf==3.20.0 --force-reinstall \
+    && pip install --ignore-installed --target=/modules git+https://github.com/Augustin-FL/googleplay-api@use_session \
+    && rm -r /modules/*/__pycache__
+
+FROM me/python-stripped:latest
+
+COPY --from=builder /modules /
+
+ENTRYPOINT ["python3"]

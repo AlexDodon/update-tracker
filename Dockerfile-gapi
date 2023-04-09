@@ -1,9 +1,0 @@
-FROM python:3.10
-
-RUN apt update && apt -y upgrade && apt install -y protobuf-compiler
-
-RUN pip install git+https://github.com/Augustin-FL/googleplay-api@use_session   \ 
-    && pip install protobuf==3.20.0 --force-reinstall                           \
-    && pip install jsonpickle
-
-CMD while true; do sleep 30; done;
